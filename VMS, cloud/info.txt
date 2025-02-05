@@ -1,0 +1,49 @@
+ssh-keygen to generate a ssh key
+
+rent a VM
+
+ssh into the machine and install node
+refer:https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-20-04
+
+now install reverse proxy(nginx) to run multiple process on the same port(kind of)
+```
+    sudo apt update
+    sudo apt install nginx
+    sudo nginx -s reload
+```
+
+then purchase the domain names and point them to the ec2 machine ip address
+
+now configure nginx for the domain names
+``` 
+sudo rm /etc/nginx/nginx.conf
+sudo vi /etc/nginx/nginx.cnf
+```
+
+and add the location and proxy_pass in the configuration file.
+refer: 
+
+```
+events {
+    # Event directives...
+}
+
+http {
+	server {
+    listen 80;
+    server_name be1.100xdevs.com;
+
+    location / {
+        proxy_pass http://localhost:8080;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+	}
+}
+
+sudo nginx -s reload
+```
+
