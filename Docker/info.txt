@@ -59,5 +59,53 @@ RUN npm install
 
 ENTRYPOINT [ "node", "main.js" ]
 ```
+2. Instead of installing node on ubuntu we can directly do 
+```
+FROM node
+
+COPY package.json package.json
+COPY package-lock.json package-lock.json
+COPY main.js main.js
+
+RUN npm install
+
+ENTRYPOINT [ "node", "main.js" ]
+```
 3. docker build -t <image-name> =>>>> -t is for tag (to give your image a name) ->>> this will locally create an image of the project
-4. To publish this image to docker hub 
+
+LAYER Caching:
+suppose if we put the copy lines before installing node on ubuntu then if the main.js file is changed it will rerun all the lines below. so to optimize the build time , we should add common lines first so that they can be cached during repeated builds
+
+To publish image to dockerHub:
+1. sign in to docker hub
+2. Create repository
+3. make sure you are logged in on the terminal before pushing
+docker login ->>> to login on the terminal
+4. docker push <image-name> =>>>> image name should be same as it is showing in the repository
+
+In real world, one project needs more than one container as they can be using redis, postgres etc. so instead of creating all the containers manually we can use docker hub
+1.Create a docker-compose.yml in root folder
+# we can comment using # in .yml file
+2.Syntax
+```
+version: '3.8' # version of docker compose
+
+services:
+  postgres:
+    image: postgres # will be pulled from hub.docker.com
+    ports:
+      - '5432:5432'
+    environment:
+     POSTGRES_USER: postgres
+     POSTGRES_DB: review
+     POSTGRES_PASSWORD: password
+
+  redis:
+    image: redis
+    ports:
+     - '6379:6379'
+```
+3. docker compose up =>> this will run all the services defined in yml file and if this does not work. then use sudo
+4. docker compose down =>> will stop the running services
+5. docker compose up -d =>> this will run in background(detached mode)
+
