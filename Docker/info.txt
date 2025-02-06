@@ -14,9 +14,10 @@ Docker hub is like github of containers where we can find all public containers
 
 Each container is completely isolated from the host environment everything you do there stays there
 
-Every container has a unique ID
+Every container has a unique ID and a random name by default
+to give custom name-> docker run -it --name my_container <image-name>
 
-Ctrl + D or exit will exit the container terminal
+Ctrl + D or exit will exit the container terminal and stop the container
 
 docker container ls =>>>> it will list all the running containers
 docker container ls -a =>>> will list all containers
@@ -109,3 +110,25 @@ services:
 4. docker compose down =>> will stop the running services
 5. docker compose up -d =>> this will run in background(detached mode)
 
+--------------------------Advanced Docker:-------------------------------
+
+Docker networking:
+docker network inspect bridge =>> will give the information of the connected containers which are using bridge network(bridge is assigned by default)
+
+docker network ls =>> list all the available network
+
+docker run -it --network=host <image-name> =>>>explicitly specify the network type   =>> while using host network, we do not need to use port mapping as the container is using the host network
+
+if we set --network=none, then we can disable the network in container
+
+Custom network:
+docker network create -d bridge <custom-name-of-network>
+
+now we can use
+docker run -it --network=<custom-name-of-network> <image-name>
+
+if we create two container with same network then those containers can communicate with each other just by the container name
+PING <container-name> =>> it will resolve the ip by itself
+
+to see the ip address of the containers 
+docker network inspect <custom-name-of-network>
