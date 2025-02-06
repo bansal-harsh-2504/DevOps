@@ -1,0 +1,63 @@
+Download docker desktop
+
+docker desktop is just a GUI and docker daemon is the actual thing.
+
+commands:
+
+docker -v 
+
+docker =>>>> to view all docker commands
+
+docker run -it ubuntu =>>>> -it is for interactive mode and ubuntu is the name of image -> this command will create a container with the ubuntu image and if it is not present locally then it will download the image from the docker hub
+
+Docker hub is like github of containers where we can find all public containers
+
+Each container is completely isolated from the host environment everything you do there stays there
+
+Every container has a unique ID
+
+Ctrl + D or exit will exit the container terminal
+
+docker container ls =>>>> it will list all the running containers
+docker container ls -a =>>> will list all containers
+
+docker start <container-name> =>>>> will run the stopped container
+docker stop <container-name> =>>>> will stop the running container
+
+docker exec <container-name> ls => it will run the ls command in that container, give the result and exit the container terminal
+
+To keep the container terminal running we can use:
+docker exec -it <container-name> bash
+
+docker images OR docker image ls =>>>> it will list all the locally present images
+
+PORT MAPPING:
+docker run -it -p <my-machine-port>:<container-port> <image-name> =>>>> this will map the port of the container to the machine or we can say it will expose the port of the container
+docker run -it -p 1025:1025 mailhog/mailhog
+
+To pass environment variable to the container
+docker run -it -e key=value -e key2=value <image-name>
+
+
+Containerization of Nodejs server with docker
+1.create a file "Dockerfile" with this exact name and no extension in the root folder of project
+2.Syntax of Dockerfile
+```
+FROM ubuntu
+
+RUN apt-get update
+RUN apt-get install -y curl
+RUN curl -sL https://deb.nodesource.com/setup_18.x | bash -
+RUN apt-get upgrade -y
+RUN apt-get install -y Nodejs
+
+COPY package.json package.json
+COPY package-lock.json package-lock.json
+COPY main.js main.js
+
+RUN npm install
+
+ENTRYPOINT [ "node", "main.js" ]
+```
+3. docker build -t <image-name> =>>>> -t is for tag (to give your image a name) ->>> this will locally create an image of the project
+4. To publish this image to docker hub 
