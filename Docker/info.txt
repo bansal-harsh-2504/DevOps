@@ -72,7 +72,7 @@ RUN npm install
 
 ENTRYPOINT [ "node", "main.js" ]
 ```
-3. docker build -t <image-name> =>>>> -t is for tag (to give your image a name) ->>> this will locally create an image of the project
+3. docker build . -t <image-name> =>>>> -t is for tag (to give your image a name) ->>> this will locally create an image of the project
 
 LAYER Caching:
 suppose if we put the copy lines before installing node on ubuntu then if the main.js file is changed it will rerun all the lines below. so to optimize the build time , we should add common lines first so that they can be cached during repeated builds

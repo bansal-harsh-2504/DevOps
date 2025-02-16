@@ -238,7 +238,3 @@ ENTRYPOINT ["node", "dist/main.js"]
 - **Optimize layer caching** by copying dependencies first.
 - **Use Docker volumes** to persist important data.
 - **Leverage multi-stage builds** to reduce final image size.
-
----
-This refined guide improves structure, readability, and completeness while maintaining all key details. 🚀
-
