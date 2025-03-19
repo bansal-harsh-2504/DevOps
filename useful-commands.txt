@@ -1,0 +1,8 @@
+To find which process running on port 3000:
+netstat -ano | findstr :3000
+
+To kill the process with PID 2044:
+taskkill //PID 2044 //F
+
+Then verify with:
+netstat -ano | findstr :3000

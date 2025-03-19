@@ -3,11 +3,11 @@ name: Deploy to Staging
 on:
   push:
     branches:
-      - "main"
+      - [main]
 
 jobs:
-  uses: ubuntu-latest
   redploy_everything:
+    runs-on: ubuntu-latest
     name: Deploying everything to the staging environment
     steps:
       - name: SSH Into server
