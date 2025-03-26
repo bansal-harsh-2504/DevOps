@@ -18,7 +18,7 @@ app.post("/", async (req, res) => {
     },
   });
   res.json({
-    message: "get endpoint",
+    message: "post endpoint",
   });
 });
 
