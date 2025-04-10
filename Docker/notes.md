@@ -47,6 +47,16 @@
   docker images
   ```
 
+- Delete a docker image
+  ```sh
+  docker rmi <image-id or name>
+  ```
+
+- Delete a docker container
+  ```sh
+  docker rm <container-id or name>
+  ```
+
 ## 3. Port Mapping
 
 - Expose a container port to the host:

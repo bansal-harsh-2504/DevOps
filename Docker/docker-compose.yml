@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  web:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    deploy:
+      replicas: 3
+      restart_policy:
+        condition: on-failure
+    
+  redis:
+    image: redis:alpine
+    deploy:
+      replicas: 1

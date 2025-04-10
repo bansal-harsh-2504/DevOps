@@ -1,0 +1,19 @@
+- docker pull mysql
+- docker image inspect mysql
+- docker container run -d --name mysql1 -e MYSQL_ALLOW_EMPTY_PASSWORD=true mysql
+- docker container exec -it <container-id> sh
+
+then in the shell terminal run these comman ds
+- mysql
+- show databases;
+- create database <name>;
+- use <db-name>
+- create table users(id INT auto_increment primary key, name varchar(50));
+- insert into users (name) values ('alice');
+- select * from users;
+
+
+now to exit type exit 2 times, first to exit mysql then to exit sh
+
+To mount a volume with mysql container
+-docker run -itd --name mysql1 -e MYSQL_ALLOW_EMPTY_PASSWORD=true -v mysql_data:/var/lib/mysql mysql

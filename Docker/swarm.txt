@@ -1,0 +1,7 @@
+docker swarm init
+docker stack ls
+docker stack ps <stack-name>
+docker stack rm <stack-name>
+docker stack services <stack-name>
+docker stack deploy -c docker-compose.yml mystack
+docker service scale <stack-name>_<service-name>=7
