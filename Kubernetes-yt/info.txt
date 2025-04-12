@@ -39,3 +39,13 @@ kubectl describe pod <pod-name>
 kubectl logs <pod-name>
 
 kubectl create deployment my-webapp --image=bansalharsh2504/myapp-k8s:02
+
+k8s rollout:
+kubectl set image deplyoment my-webapp <container-name> <image-name>:version
+-kubectl set image deployment mywebapp myapp-k8s=bansalharsh2504/myapp-k8s:04
+
+kubectl rollout status deployment mywebapp
+
+kubectl rollout undo deployment mywebapp
+
+kubectl scale deployment mywebapp --replicas=4
