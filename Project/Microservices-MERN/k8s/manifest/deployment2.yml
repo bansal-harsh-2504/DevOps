@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: service2
+  labels:
+    app: svc2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: svc2
+  template:
+    metadata:
+      labels:
+        app: svc2
+    spec:
+      containers:
+      - name: service1
+        image: yashgoyal04/svc2:latest
+        ports:
+        - containerPort: 80
+      
