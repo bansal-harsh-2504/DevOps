@@ -1,0 +1,41 @@
+installed chocolatey
+
+choco install kubernetes
+make .kube file and config inside it 
+
+choco install minikube
+
+docker ps
+
+minikube start
+minikube delete
+
+minikube dashboard
+
+minikube status
+
+minikube delete 
+
+kubectl get deployments
+
+kubectl get pods
+
+docker build -t  bansalharsh2504/myapp-k8s:03 .
+
+docker push bansalharsh2504/myapp-k8s:03
+
+kubectl expose deployment my-app --port=80 --type=LoadBalancer
+
+kubectl create deployment my-app --image=nginx:latest
+
+minikube service my-app
+
+kubectl delete deployment my-app
+
+kubectl get services
+
+kubectl describe pod <pod-name>
+
+kubectl logs <pod-name>
+
+kubectl create deployment my-webapp --image=bansalharsh2504/myapp-k8s:02
