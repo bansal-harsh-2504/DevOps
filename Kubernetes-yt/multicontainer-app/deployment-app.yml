@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-multicontainer
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: multicontainerapp
+  template:
+    metadata:
+      labels:
+        app: multicontainerapp
+    spec:
+      containers:
+      - name: nodedb-app
+        image: bansalharsh2504/multicontainer-app:01
+      - name: mongodb
+        image: mongo:latest
