@@ -1,0 +1,132 @@
+1. Get a linux environment 
+create a ec2 instance
+
+2. connect - ssh
+
+click on connect on top right of instance page
+
+locate the downloaded .pem key
+
+```
+    ssh -i "shell-scripting-devops-key.pem" ubuntu@ec2-15-207-89-160.ap-south-1.compute.amazonaws.com
+```
+
+2. create a script
+
+a. Text editor-> vim
+```
+    vim hello.txt
+```
+press i for insert mode
+
+b. To exit
+
+press esc
+```
+    :wq -> write and quit
+or 
+    :q! -> quit without saving (force quit)
+```
+
+c. To view the file contents
+```
+    cat hello.txt
+```
+
+d. vim hello.sh
+
+write 
+```
+    #!/bin/bash 
+```
+so that we can tell which shell to use to execute this script, this line is known as shabang.
+there are different shells like sh, bash, fish, csh, zsh etc.
+linux kernel was made by linus torvalds and sh was made by steve bourne, he then created bash which is short for bourne again shell.
+
+we can check the location of shell by
+``` 
+    which bash
+```
+
+3. Execute the script
+
+first check the executable permission for the file
+```
+    ls -l
+```
+
+give the execute permission to hello.sh
+```
+    chmod u+x hello.sh
+```
+
+now execute the script
+```
+./hello.sh or bash hello.sh
+```
+
+##################################################################
+Basic Linux:
+
+# -> used for single line comment
+
+<<comment
+This is a
+multiline comment
+comment                     -> used for multiline comment
+
+$ is used before variables
+name="harsh"
+echo "my name is $name"
+
+or if we want to run a command we can use $()
+echo "today's date is $(date)"
+
+read -> used to take input
+echo "enter your age"
+read age
+echo "you are $age years old"
+
+or we can also give prompt to read
+read -p "enter your age" age
+echo "you are $age years old"
+
+we can add user by 
+read -p "enter username" username
+sudo useradd -m $username
+
+and we can see the users by
+cat /etc/passwd
+
+
+Arguments:
+./hello.sh <1starg> <2ndarg>
+
+we can access the the arguments in the script by $0, $1 etc. and $0 is the file name
+
+
+<<disclaimer
+This is just for information purpose
+disclaimer
+
+Conditional Statements
+
+if [[ $person == "daya" ]];
+then
+        echo "loyal"
+elif [[ $person == "family" ]];
+then
+        echo "loyal"
+else
+        echo "not loyal"
+fi
+
+
+Control Flow
+
+for((i=1; i<=5; i++))
+do
+        mkdir "demo$i"
+done
+
+while [[ ]]

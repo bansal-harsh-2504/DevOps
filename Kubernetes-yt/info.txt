@@ -59,3 +59,10 @@ kubectl get all
 
 make a configmap file when deploy services in different pods
 
+kubectl get sc (storage class)
+
+kubectl apply -f host-pv.yml
+
+kubectl get pv
+
+kubectl get pvc
