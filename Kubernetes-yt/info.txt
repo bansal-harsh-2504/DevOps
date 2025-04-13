@@ -49,3 +49,13 @@ kubectl rollout status deployment mywebapp
 kubectl rollout undo deployment mywebapp
 
 kubectl scale deployment mywebapp --replicas=4
+
+kubectl apply -f deployment-webapp.yml
+kubectl delete -f deployment-webapp.yml
+
+kubectl apply -f service-webapp.yml
+
+kubectl get all
+
+make a configmap file when deploy services in different pods
+

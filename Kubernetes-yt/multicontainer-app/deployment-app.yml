@@ -13,7 +13,21 @@ spec:
         app: multicontainerapp
     spec:
       containers:
-      - name: nodedb-app
-        image: bansalharsh2504/multicontainer-app:01
-      - name: mongodb
-        image: mongo:latest
+        - name: nodedb-app
+          image: bansalharsh2504/multicontainer-app:03
+        - name: mongodb
+          image: mongo:latest
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-multicontainer
+spec:
+  ports:
+    - name: http
+      port: 8080
+      targetPort: 3000
+  selector:
+    app: multicontainer
+  type: LoadBalancer
